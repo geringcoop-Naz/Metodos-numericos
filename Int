@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct 28 11:02:43 2025
+
+@author: nass
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.integrate as integrate
+
+def f(x):
+    return np.sin(x)
+    
+def integral_rect_izq(f,a,b,n):
+    dx=(b-a)/n
+    x = np.arange(a,b,dx)
+    y=f(x)
+    integral=dx*np.sum(y)
+    plt.bar(x,y,width=dx)
+    x_fine=np.linspace(a,b,100)
+    y_fine = f(x_fine)
+    plt.plot(x_fine,y_fine)
+    plt.show()
+    resul,erroquad=integrate(f,a,b)
+    print(resul)
+    return integral
